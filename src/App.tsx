@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { isSbUp } from './services/sbstatus.service'
 
 function App() {
+  const [result, setResult] = useState<boolean>(false);
+
+  useEffect(() => {
+    const api = async () => {
+      const result = await isSbUp();
+      setResult(result);
+    }
+
+    api();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          The main Sponsorblock server is {result ? 'up' : 'down'}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
