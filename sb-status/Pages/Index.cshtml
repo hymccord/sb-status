@@ -1,0 +1,41 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="App">
+    <header class="App-header">
+        <p id="sb-status">
+            Main Sponsorblock server status:
+            @{
+                switch (Model.Health)
+                {
+                    case Yarp.ReverseProxy.Model.DestinationHealth.Healthy:
+                        <span role="img" aria-label="Healthy">✔️</span>
+                        break;
+                    case Yarp.ReverseProxy.Model.DestinationHealth.Unhealthy:
+                        <span role="img" aria-label="Unhealthy">💀</span>
+                        break;
+                    case Yarp.ReverseProxy.Model.DestinationHealth.Unknown:
+                    default:
+                        <span role="img" aria-label="Unknown">❔</span>
+                        break;
+                }
+            }
+        </p>
+@*        <br />
+        <p>Backups: </p>
+
+        <table>
+        @{
+        foreach (var backup in Model.Backups)
+        {
+            <tr>
+            <td align="left"><span>@backup.Model.Config.Address</span></td><td><span>@IndexModel.HeathToEmoji(@backup.Health.Active)</span></td>
+            </tr>
+        }
+        }
+        </table>*@
+    </header>
+</div>
