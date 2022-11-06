@@ -3,6 +3,9 @@ on:
   push:
     branches:
     - master
+    paths:
+      - 'sb-status/**'
+
 env:
   AZURE_WEBAPP_NAME: as-sb-status
   AZURE_WEBAPP_PACKAGE_PATH: sb-status/published
