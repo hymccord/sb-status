@@ -30,7 +30,7 @@ public class IndexModel : PageModel
 
     public static string HeathToEmoji(DestinationHealth status) => status switch
     {
-        DestinationHealth.Healthy => "✔",
+        DestinationHealth.Healthy => "✔️",
         DestinationHealth.Unhealthy => "💀",
         DestinationHealth.Unknown=> "❔",
         _ => throw new NotImplementedException()
