@@ -24,18 +24,21 @@
                 }
             }
         </p>
-@*        <br />
+        <br />
         <p>Backups: </p>
 
         <table>
-        @{
-        foreach (var backup in Model.Backups)
-        {
-            <tr>
-            <td align="left"><span>@backup.Model.Config.Address</span></td><td><span>@IndexModel.HeathToEmoji(@backup.Health.Active)</span></td>
-            </tr>
-        }
-        }
-        </table>*@
+            <tbody>
+                @{
+                    foreach (var backup in Model.Backups.OrderBy(d => d.Model.Config.Address))
+                    {
+                        <tr>
+                            <td style="text-align:left">@backup.Model.Config.Address:</td>
+                            <td>@IndexModel.HeathToEmoji(@backup.Health.Active)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
     </header>
 </div>
